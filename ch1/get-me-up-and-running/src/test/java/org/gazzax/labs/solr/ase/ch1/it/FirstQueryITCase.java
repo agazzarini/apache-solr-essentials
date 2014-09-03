@@ -68,7 +68,7 @@ public class FirstQueryITCase {
 		inputDocument.setField("id", 1);
 		inputDocument.setField("title", "Apache SOLR Essentials");
 		inputDocument.setField("author", "Andrea Gazzarini");
-		inputDocument.setField("isbn", "978-1-78439-964-1");
+		inputDocument.setField("isbn", "972-2-5A619-12A-X");
 		
 		// 2. Adds the document
 		client.add(inputDocument);
@@ -103,7 +103,7 @@ public class FirstQueryITCase {
 		assertEquals("1", id);
 		assertEquals("Apache SOLR Essentials", title);
 		assertEquals("Andrea Gazzarini", author);
-		assertEquals("978-1-78439-964-1", isbn);
+		assertEquals("972-2-5A619-12A-X", isbn);
 	}
 	
 	/**
