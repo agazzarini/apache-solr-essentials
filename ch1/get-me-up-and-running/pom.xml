@@ -5,9 +5,7 @@
 	<artifactId>get-me-up-and-running</artifactId>
 	<version>1.0</version>
 	<name>Chapter 1 Project</name>
-	<description>Demonstrates how to develop with SOLR within Eclipse </description>
 	<properties>
-		<jena.version>2.12.0</jena.version>
 		<jdk.version>1.7</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
@@ -157,5 +155,10 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.solr</groupId>
+			<artifactId>solr-core</artifactId>
+			<version>${solr.version}</version>
+		</dependency>		
 	</dependencies>
 </project>
