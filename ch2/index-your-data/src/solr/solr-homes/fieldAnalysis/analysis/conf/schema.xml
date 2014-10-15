@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="A schema for inspecting the field analysis" version="1.5">
+	<types>
+		<fieldType name="string" class="solr.StrField" sortMissingLast="true" />
+		<fieldType name="right_truncated_phrase_field_type" class="solr.TextField" positionIncrementGap="100" stored="false" multiValued="true" omitNorms="true">
+			<analyzer type="index">
+				<tokenizer class="solr.KeywordTokenizerFactory"/>
+	        	<filter class="solr.LowerCaseFilterFactory" />
+	        	<filter class="solr.WordDelimiterFilterFactory" generateWordParts="0" generateNumberParts="0" catenateWords="0" catenateNumbers="0" catenateAll="1" splitOnCaseChange="0" />
+				<filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="40" side="front"/>
+			</analyzer>
+			<analyzer type="query">
+				<tokenizer class="solr.KeywordTokenizerFactory"/>
+	        	<filter class="solr.LowerCaseFilterFactory" />
+	        	<filter class="solr.WordDelimiterFilterFactory" generateWordParts="0" generateNumberParts="0" catenateWords="0" catenateNumbers="0" catenateAll="1" splitOnCaseChange="0" />
+			</analyzer>
+		</fieldType>
+		<fieldType name="exact_match_field_type" class="solr.TextField" omitNorms="true" positionIncrementGap="100" stored="false" multiValued="true">
+			<analyzer>
+				<charFilter class="solr.MappingCharFilterFactory" mapping="mapping-FoldToASCII.txt"/>	
+				<tokenizer class="solr.KeywordTokenizerFactory"/>
+	        	<filter class="solr.LowerCaseFilterFactory" />
+	        	<filter class="solr.WordDelimiterFilterFactory" generateWordParts="0" generateNumberParts="0" catenateWords="0" catenateNumbers="0" catenateAll="1" splitOnCaseChange="0" />
+			</analyzer>
+		</fieldType>	
+		<fieldType name="italian-light-stemmed-field_type" class="solr.TextField" omitNorms="true">
+			<analyzer>
+				<charFilter class="solr.MappingCharFilterFactory" mapping="mapping-FoldToASCII.txt"/>	
+				<tokenizer class="solr.WhitespaceTokenizerFactory"/>
+				<filter class="solr.LowerCaseFilterFactory" />
+				<filter class="solr.WordDelimiterFilterFactory" 
+						generateWordParts="1" 
+						generateNumberParts="1" 
+						catenateWords="0" 
+						catenateNumbers="0" 
+						catenateAll="0" 
+						splitOnCaseChange="0" />
+				<filter class="solr.ItalianLightStemFilterFactory" />
+			</analyzer>
+		</fieldType>	
+		<fieldtype name="isbn_or_issn_normalized_text" class="solr.TextField" positionIncrementGap="100" omitNorms="true">
+	      	<analyzer type="index">
+	        	<tokenizer class="solr.KeywordTokenizerFactory" /> 
+		        	<filter class="solr.LowerCaseFilterFactory" />
+					<filter class="solr.WordDelimiterFilterFactory" 
+						generateWordParts="0" 
+						generateNumberParts="0" 
+						catenateWords="0" 
+						catenateNumbers="0" 
+						catenateAll="1" 
+						splitOnCaseChange="0" />
+					<filter class="solr.LengthFilterFactory" min="8" max="13" />	
+	      	</analyzer>
+			<analyzer type="query">
+	        	<tokenizer class="solr.KeywordTokenizerFactory" /> 
+		        	<filter class="solr.LowerCaseFilterFactory" />
+					<filter class="solr.WordDelimiterFilterFactory" 
+						generateWordParts="0" 
+						generateNumberParts="0" 
+						catenateWords="0" 
+						catenateNumbers="0" 
+						catenateAll="1" 
+						splitOnCaseChange="0" />
+	      	</analyzer>	      	
+		</fieldtype>
+	</types>
+	<fields>
+		<field name="id" type="string" indexed="true" stored="true" required="true" />
+		<field name="right_truncated_field" type="right_truncated_phrase_field_type" indexed="true" stored="true" required="true" />
+		<field name="exact_match_field" type="exact_match_field_type" indexed="true" stored="true" required="true" />
+		<field name="italian-light-stemmed-field" type="italian-light-stemmed-field_type" indexed="true" stored="true" required="true" />
+	</fields>
+	<uniqueKey>id</uniqueKey>
+</schema>
