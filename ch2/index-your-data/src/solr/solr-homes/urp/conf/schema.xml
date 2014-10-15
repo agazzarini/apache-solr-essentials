@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="A simple OPAC schema" version="1.5">
+	<types>
+		<fieldType name="string" class="solr.StrField" sortMissingLast="true" />
+	</types>
+	<fields>
+		<field name="id" type="string" indexed="true" stored="true" required="true" />
+		<field name="isbn" type="string" indexed="true" stored="true" required="true" />
+		<field name="title" type="string" indexed="true" stored="true" required="true" />
+		<field name="author" type="string" indexed="true" stored="true" required="true" />
+	</fields>
+	<uniqueKey>id</uniqueKey>
+</schema>
