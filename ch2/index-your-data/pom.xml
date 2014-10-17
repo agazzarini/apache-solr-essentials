@@ -62,6 +62,7 @@
 							<solr.solr.home>${basedir}/src/solr/solr-homes/${example.core.name}</solr.solr.home>
 							<solr.data.dir>${project.build.directory}/solr</solr.data.dir>
 							<log4j.configuration>file://${basedir}/src/test/resources/log4j.xml</log4j.configuration>
+							<project.lib.dir>${basedir}/target</project.lib.dir>
 						</systemProperties>
 						<containerId>jetty7x</containerId>
 						<type>embedded</type>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config>
 	<luceneMatchVersion>LUCENE_48</luceneMatchVersion>
-	<lib dir="/work/workspaces/apache-solr-essentials/apache-solr-essentials/ch2/index-your-data/target/" regex=".*\.jar" />
+	<lib dir="${project.lib.dir}" regex=".*\.jar" />
 	<dataDir>${solr.data.dir}/${solr.core.name}/data</dataDir>
 	<directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}" />
 	<codecFactory class="solr.SchemaCodecFactory" />
