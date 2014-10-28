@@ -1,0 +1,23 @@
+<add commitWithin="1000">
+	<doc>
+		<field name="id">1</field>
+		<field name="title">A Modern Jazz Symposium of Music and Poetry</field>
+		<field name="artist">Charles Mingus</field>
+		<field name="genre">Jazz</field>
+		<field name="released">1957</field>
+	</doc>
+	<doc>
+		<field name="id">2</field>
+		<field name="title">Where Jazz meets Poetry</field>
+		<field name="artist">United Artists</field>		
+		<field name="genre">Jazz</field>
+		<field name="released">1976</field>
+	</doc>
+	<doc>
+		<field name="id">3</field>
+		<field name="title">I'm In The Mood For Love</field>
+		<field name="artist">Charlie Parker</field>
+		<field name="genre">Jazz</field>
+		<field name="released">1981</field>
+	</doc>	
+</add>

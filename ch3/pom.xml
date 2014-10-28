@@ -59,7 +59,7 @@
 					<container>
 						<systemProperties>
 							<cargo.servlet.port>8983</cargo.servlet.port>
-							<solr.solr.home>${basedir}/src/solr/solr-homes/${example.core.name}</solr.solr.home>
+							<solr.solr.home>${basedir}/src/solr/solr-home/${example.core.name}</solr.solr.home>
 							<solr.data.dir>${project.build.directory}/solr</solr.data.dir>
 							<log4j.configuration>file://${basedir}/src/test/resources/log4j.xml</log4j.configuration>
 							<project.lib.dir>${basedir}/target</project.lib.dir>
@@ -118,23 +118,11 @@
 	</build>
 	<profiles>
 		<profile>
-			<id>fieldAnalysis</id>
+			<id>query-parsers</id>
 			<properties>
-				<example.core.name>fieldAnalysis</example.core.name>
+				<example.core.name>query-parsers</example.core.name>
 			</properties>
-		</profile>
-		<profile>
-			<id>flatIndexer</id>
-			<properties>
-				<example.core.name>flatIndexer</example.core.name>
-			</properties>
-		</profile>
-		<profile>
-			<id>urp</id>
-			<properties>
-				<example.core.name>urp</example.core.name>
-			</properties>
-		</profile>				
+		</profile>			
 	</profiles>
 	<dependencies>
 		<dependency>
