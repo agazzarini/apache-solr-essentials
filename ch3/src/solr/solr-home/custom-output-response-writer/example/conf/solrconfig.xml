@@ -1,0 +1,62 @@
+<!-- 
+	The solrconfig.xml for the autocompletion example is quite simple.
+	It defines two request handlers, one for updates and one for searches. This latter
+	will use the custom response writer (see the wt parameter).  
+ -->
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	<abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
+	<luceneMatchVersion>LUCENE_47</luceneMatchVersion>
+ 	<dataDir>${solr.data.dir}/${solr.core.name}/data</dataDir>
+	<indexConfig>
+	    <lockType>${solr.lock.type:native}</lockType>
+  	</indexConfig>
+	<updateHandler class="solr.DirectUpdateHandler2" />
+	<query>
+		<maxBooleanClauses>1024</maxBooleanClauses>
+	    <filterCache class="solr.LRUCache" size="102400" initialSize="102400" autowarmCount="51200"/>
+	    <fieldValueCache class="solr.FastLRUCache" size="5120" autowarmCount="2048" showItems="64"/>
+	    <queryResultCache class="solr.LRUCache" size="8192" initialSize="8192" autowarmCount="0"/>
+	    <documentCache class="solr.LRUCache" size="51200" initialSize="51200" autowarmCount="10240"/>
+	    <enableLazyFieldLoading>true</enableLazyFieldLoading>
+	    <useFilterForSortedQuery>true</useFilterForSortedQuery>
+	    <queryResultWindowSize>80</queryResultWindowSize>
+	    <queryResultMaxDocsCached>100</queryResultMaxDocsCached>
+	    <HashDocSet maxSize="200000" loadFactor="0.75"/>
+    	<useColdSearcher>true</useColdSearcher>
+    	<maxWarmingSearchers>2</maxWarmingSearchers>
+    </query>
+  	<requestDispatcher handleSelect="true" >
+    	<requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
+    	<httpCaching lastModifiedFrom="openTime" etagSeed="Solr" />
+    </requestDispatcher>
+    
+    <!-- This is the only search handler. 
+    	 Note the invariants section that forces some parameters (especially 
+    	 the wt which is set "autocomplete", the name we assigned to the custom
+    	 response writer)    
+    -->
+	<requestHandler name="/auto" class="solr.SearchHandler" default="true">
+    	<lst name="defaults">
+	    	<str name="rows">10</str>
+		</lst>
+		<lst name="invariants">
+			<str name="facet">false</str>
+			<str name="sort">score desc</str>
+			<str name="fl">label, type</str>
+			<str name="wt">autocomplete</str>			
+		</lst>
+	</requestHandler>
+	
+	<!-- 
+		The response writer declaration. Pretty simple, we don't need any
+		initialisation parameter so we just need to define a name and the 
+		implementation class. 
+	 -->
+	<queryResponseWriter name="autocomplete" class="org.gazzax.labs.solr.ase.ch3.rw.AutocompleteResponseWriter"/>
+  	<requestHandler name="/update" class="solr.UpdateRequestHandler" startup="lazy"/>
+  	<requestHandler name="/admin/" class="org.apache.solr.handler.admin.AdminHandlers" />
+  	<admin>
+    	<defaultQuery>${solr.core.name}</defaultQuery>
+	</admin>
+</config>

@@ -1,0 +1,106 @@
+<add commitWithin="1000">
+	<doc>
+		<field name="label">Marcus Miller</field>
+		<field name="type">bassist</field>
+	</doc>
+	<doc>
+		<field name="label">Alain Caron</field>
+		<field name="type">bassist</field>
+	</doc>
+	<doc>
+		<field name="label">Jaco Pastorius</field>
+		<field name="type">bassist</field>
+	</doc>
+	<doc>
+		<field name="label">Michael Manring</field>
+		<field name="type">bassist</field>
+	</doc>
+	<doc>
+		<field name="label">Stanley Clarke</field>
+		<field name="type">bassist</field>
+	</doc>
+	<doc>
+		<field name="label">Pino Palladino</field>
+		<field name="type">bassist</field>
+	</doc>
+	<doc>
+		<field name="label">Allan Holdsworth</field>
+		<field name="type">guitarist</field>
+	</doc>
+	<doc>
+		<field name="label">Steve Ray Vaughan</field>
+		<field name="type">guitarist</field>
+	</doc>
+	<doc>
+		<field name="label">Jeff Beck</field>
+		<field name="type">guitarist</field>
+	</doc>
+	<doc>
+		<field name="label">Steve Vai</field>
+		<field name="type">guitarist</field>
+	</doc>
+	<doc>
+		<field name="label">Joe Satriani</field>
+		<field name="type">guitarist</field>
+	</doc>
+	<doc>
+		<field name="label">Got a match</field>
+		<field name="type">song</field>
+	</doc>	
+	<doc>
+		<field name="label">Devil Shuffle</field>
+		<field name="type">song</field>
+	</doc>	
+	<doc>
+		<field name="label">No way</field>
+		<field name="type">song</field>
+	</doc>	
+	<doc>
+		<field name="label">If this bass could only talk</field>
+		<field name="type">song</field>
+	</doc>	
+	<doc>
+		<field name="label">Spain</field>
+		<field name="type">song</field>
+	</doc>	
+	<doc>
+		<field name="label">Nigerian Marketplace</field>
+		<field name="type">song</field>
+	</doc>	
+	<doc>
+		<field name="label">Had to go</field>
+		<field name="type">song</field>
+	</doc>		
+	<doc>
+		<field name="label">All the things you are</field>
+		<field name="type">song</field>
+	</doc>		
+	<doc>
+		<field name="label">Tender Surrender</field>
+		<field name="type">song</field>
+	</doc>			
+	<doc>
+		<field name="label">Giant Steps</field>
+		<field name="type">song</field>
+	</doc>			
+	<doc>
+		<field name="label">On the corner</field>
+		<field name="type">song</field>
+	</doc>			
+	<doc>
+		<field name="label">There's a fire in the house</field>
+		<field name="type">song</field>
+	</doc>			
+	<doc>
+		<field name="label">Eclipse</field>
+		<field name="type">song</field>
+	</doc>				
+	<doc>
+		<field name="label">Flying in a blue dream</field>
+		<field name="type">song</field>
+	</doc>				
+	<doc>
+		<field name="label">The Crying machine</field>
+		<field name="type">song</field>
+	</doc>				
+</add>

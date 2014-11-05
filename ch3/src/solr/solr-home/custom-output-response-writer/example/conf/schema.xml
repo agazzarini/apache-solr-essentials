@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="Apache Solr Essentials - Custom Response Writer example" version="1.2">
+	<types>
+		<!-- Un-analyzed type used for labels -->
+		<fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
+		
+		<!-- 
+			Suggestions will be subjected to these analyzer chains. 
+			At index time, a given string is broken in term is which in turn are broken 
+			in a set of edge ngrams in order to match queries in a "starts with" way. 
+			So for example an input string like "Espresso and Cappuccino" will become:
+			
+			es
+			esp
+			espr
+			espres
+			espress
+			espresso
+			ca
+			cap
+			capp
+			...and so on			
+			
+			At query time things are easier, because, other than tokenizing and lowercasing,
+			we directly process the user entered value
+		 -->
+		<fieldType name="suggestion-ngram" class="solr.TextField" positionIncrementGap="100" omitNorms="true">
+			<analyzer type="index">
+				<!-- A char filter is required in order to normalize diacritics -->
+				<charFilter class="solr.MappingCharFilterFactory" mapping="mapping-FoldToASCII.txt"/>			
+				
+				<!-- Then we tokenize by whitespace -->
+				<tokenizer class="solr.WhitespaceTokenizerFactory"/>
+				
+				<!-- Lowecase all tokens -->
+				<filter class="solr.LowerCaseFilterFactory" />
+				
+				<!-- Remove delimiters -->
+				<filter class="solr.WordDelimiterFilterFactory" 
+					generateWordParts="0" 
+					generateNumberParts="0" 
+					catenateWords="0" 
+					catenateNumbers="0" 
+					catenateAll="0" 
+					splitOnCaseChange="0" />
+				
+				<!-- Apply the edge ngramming analysis -->
+				<filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="20" side="front"/>
+			</analyzer>
+			
+			<analyzer type="query">
+				<!-- Diacritics normalization (so "àndrèà" will match also "Andrea" and viceversa  -->
+				<charFilter class="solr.MappingCharFilterFactory" mapping="mapping-FoldToASCII.txt"/>			
+				
+				<!-- Tokenizes by whitespaces -->
+				<tokenizer class="solr.WhitespaceTokenizerFactory"/>
+
+				<!-- Lowercase all tokens -->
+				<filter class="solr.LowerCaseFilterFactory" />
+			</analyzer>
+		</fieldType>
+	</types>
+	<fields>
+		<!-- The heading label which is stored verbatim -->
+		<field name="label" type="string" indexed="true" stored="true" required="true" multiValued="false"/> 
+		
+		<!-- The field, derived from label, we will use as a search field -->
+		<field name="search" type="suggestion-ngram" indexed="true" stored="false" required="true" multiValued="false"/> 
+		<copyField source="label" dest="search" />
+		
+		<!-- 
+			The label type...unless this example doesn't consider this information, 
+			it could be a way to differentiate headings that are titles from author names, from publishers 
+			and so on...that information could be send back with the label so a GUI 
+			could show the header label and the type too. Ex
+			
+			Dante Aligheri (Author)
+			Divina Commedia, La (Title)
+			...
+		 -->
+		<field name="type" type="string" indexed="true" stored="true" required="true" multiValued="false"/> 
+	 </fields>
+ 	<uniqueKey>label</uniqueKey>
+ 	<defaultSearchField>search</defaultSearchField>
+ 	<solrQueryParser defaultOperator="AND"/>
+</schema>
