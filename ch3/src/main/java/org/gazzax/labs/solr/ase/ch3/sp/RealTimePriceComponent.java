@@ -1,4 +1,4 @@
-package org.gazzax.labs.solr.ase.ch2.urp;
+package org.gazzax.labs.solr.ase.ch3.sp;
 
 import java.io.IOException;
 import java.util.Random;
@@ -15,7 +15,7 @@ import org.apache.solr.handler.component.ResponseBuilder;
 import org.apache.solr.handler.component.SearchComponent;
 import org.apache.solr.search.DocIterator;
 import org.apache.solr.search.SolrIndexSearcher;
-
+ 
 /**
  * A {@link SearchComponent} for gathering realtime prices from an external
  * resource (e.g. database, web service).

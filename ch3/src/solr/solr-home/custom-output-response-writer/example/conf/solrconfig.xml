@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- 
 	The solrconfig.xml for the autocompletion example is quite simple.
 	It defines two request handlers, one for updates and one for searches. This latter
 	will use the custom response writer (see the wt parameter).  
  -->
-<?xml version="1.0" encoding="UTF-8" ?>
 <config>
 	<abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
-	<luceneMatchVersion>LUCENE_47</luceneMatchVersion>
+	<luceneMatchVersion>LUCENE_48</luceneMatchVersion>
+	<lib dir="${project.lib.dir}" regex=".*\.jar" />
  	<dataDir>${solr.data.dir}/${solr.core.name}/data</dataDir>
 	<indexConfig>
 	    <lockType>${solr.lock.type:native}</lockType>
