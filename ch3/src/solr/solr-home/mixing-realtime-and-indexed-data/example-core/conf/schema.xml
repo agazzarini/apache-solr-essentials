@@ -20,8 +20,6 @@
 	<fields>
 		<field name="id" type="code" indexed="true" stored="true" required="true" />
 		<field name="title" type="text" indexed="true" stored="true" required="true" />
-		<field name="author" type="text" indexed="true" stored="true" required="true" />
-		<field name="publication_year" type="int" indexed="true" stored="true" required="true" />
 	</fields>
 	<uniqueKey>id</uniqueKey>
 </schema>

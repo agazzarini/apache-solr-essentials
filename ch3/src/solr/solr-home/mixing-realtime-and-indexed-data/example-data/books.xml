@@ -1,4 +1,4 @@
-<add>
+<add commitWithin="1000">
 	<doc>
 		<field name="id">1</field>
 		<field name="title">Enterprise Integration Patterns</field>

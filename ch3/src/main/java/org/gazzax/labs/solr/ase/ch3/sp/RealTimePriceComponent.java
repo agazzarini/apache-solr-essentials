@@ -28,9 +28,17 @@ import org.apache.solr.search.SolrIndexSearcher;
 	&lt;/searchComponent&gt;
  * </pre><br/>
  * 
- * And then in the appropriate RequestHandler:
+ * NOTE: this example should require a database where prices can be retrieved. For demonstration, 
+ * it accepts a configuration parameter "dummy-mode", which defaults to true that returns random prices.
+ * If you want to use that with a real database you must rewrite / subclass and override the {@link #getPrice(String)} method
+ * in order to execute a query against a running database. Don't forget to set "dummy-mode" to false.
  * 
- * </br>
+ * <br/><br/>
+ * 
+ * After doing that, the search component needs to be declared within the appropriate RequestHandler:
+ * 
+ * <br/>
+ * 
  * <pre>
 	&lt;requestHandler name=”/xyz” (other attributes follow) &gt;
 		&lt;lst name=”defaults”&gt;
@@ -61,12 +69,22 @@ public class RealTimePriceComponent extends SearchComponent {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void init(final NamedList args) {
-		// 1. Get the JNDI name of the datasource. This component uses a
-		// database as external resource, but it could be
+		
+		// 1.Retrieve the configuration parameters. 
+		// First a "dummy" mode flag, which indicates we are running the 
+		// example without a database.
+		// If the dummy mode is set to true the get the datasource name
+		// This component uses a database as external resource, but it could be
 		// also a web service. In any case, this is the place where that
 		// resource should be initialized.
-		final String datasourceName = SolrParams.toSolrParams(args).get(
-				"datasource-jndi-name", "jdbc/pricesdb");
+		final SolrParams params = SolrParams.toSolrParams(args);
+		final boolean isInDummyMode = params.getBool("dummy-mode", true);
+		if (isInDummyMode) {
+			hasBeenCorrectlyInitialised = true;
+			return;
+		}
+		
+		final String datasourceName = params.get("datasource-jndi-name", "jdbc/pricesdb");
 
 		// In case you want give a try, this component actually stubs its
 		// behaviour.

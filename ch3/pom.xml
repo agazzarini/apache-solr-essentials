@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.gazzax.labs.solr</groupId>
-	<artifactId>make-your-data-searchable</artifactId>
+	<artifactId>search-your-data</artifactId>
 	<version>1.0</version>
 	<properties>
 		<jdk.version>1.7</jdk.version>
@@ -373,9 +373,15 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>response-writer</id>
+			<id>custom-response-writer</id>
 			<properties>
 				<example.core.dir>custom-output-response-writer</example.core.dir>
+			</properties>
+		</profile>
+		<profile>
+			<id>custom-search-component</id>
+			<properties>
+				<example.core.dir>mixing-realtime-and-indexed-data</example.core.dir>
 			</properties>
 		</profile>
 	</profiles>

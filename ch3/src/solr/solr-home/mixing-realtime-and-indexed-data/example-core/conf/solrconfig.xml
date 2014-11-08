@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config>
 	<luceneMatchVersion>LUCENE_48</luceneMatchVersion>
-	<lib dir="/work/workspaces/apache-solr-essentials/apache-solr-essentials/ch2/index-your-data/target/" regex=".*\.jar" />
+	<lib dir="${project.lib.dir}" regex=".*\.jar" />
 	<dataDir>${solr.data.dir}/${solr.core.name}/data</dataDir>
 	<directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}" />
 	<codecFactory class="solr.SchemaCodecFactory" />
@@ -33,10 +33,21 @@
 			<str name="q">*:*</str>
 			<bool name="facet">false</bool>
 		</lst>
+		<!-- 
+			Here we declare we want to use, after default components execution, our custom component 
+		-->
+		<arr name="last-components">
+			<str>prices</str>
+		</arr>	
 	</requestHandler>
-	<requestHandler name="/analysis/field"  startup="lazy" class="solr.FieldAnalysisRequestHandler" />
 	<requestHandler name="/update" class="solr.UpdateRequestHandler"/>
 	<requestHandler name="/admin/" class="solr.admin.AdminHandlers" />
+	
+	<!-- Here is where we declare and configure our custom search component -->
+	<searchComponent name="prices" class="org.gazzax.labs.solr.ase.ch3.sp.RealTimePriceComponent">
+		<str name="datasource-jndi-name">jdbc/amicus</str>
+		<bool name="dummy-mode">true</bool>
+	</searchComponent>	
 	<admin>
 		<defaultQuery>*:*</defaultQuery>
 	</admin>
