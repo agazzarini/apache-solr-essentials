@@ -9,7 +9,14 @@
 	<indexConfig>
 		<lockType>${solr.lock.type:native}</lockType>
 	</indexConfig>
-	<updateHandler class="solr.DirectUpdateHandler2"/>
+	<updateHandler class="solr.DirectUpdateHandler2">
+		<!-- 
+	    	This event listener will be in charge of automatically load the sample data on Solr startup 
+	    -->
+	    <listener event="firstSearcher" class="org.gazzax.labs.solr.ase.ch3.listener.SolrStartupListener">
+	      <str name="datafile">${solr.solr.home}/example-data/books.xml</str>
+	    </listener>	  			
+	</updateHandler>
 	<query>
 		<maxBooleanClauses>1024</maxBooleanClauses>
 		<filterCache class="solr.FastLRUCache" size="512" initialSize="512" autowarmCount="0" />
@@ -18,12 +25,6 @@
 		<enableLazyFieldLoading>true</enableLazyFieldLoading>
 		<queryResultWindowSize>20</queryResultWindowSize>
 		<queryResultMaxDocsCached>200</queryResultMaxDocsCached>
-		<!-- 
-	    	This event listener will be in charge of automatically load the sample data on Solr startup 
-	    -->
-	    <listener event="firstSearcher" class="org.gazzax.labs.solr.ase.ch3.listener.SolrStartupListener">
-	      <str name="datafile">${solr.solr.home}/example-data/books.xml</str>
-	    </listener>	  		
 		<useColdSearcher>false</useColdSearcher>
 		<maxWarmingSearchers>2</maxWarmingSearchers>
 	</query>  	
