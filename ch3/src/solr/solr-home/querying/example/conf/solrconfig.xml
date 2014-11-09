@@ -14,7 +14,7 @@
 	    	This event listener will be in charge of automatically load the sample data on Solr startup 
 	    -->
 	    <listener event="firstSearcher" class="org.gazzax.labs.solr.ase.ch3.listener.SolrStartupListener">
-	      <str name="datafile">${solr.solr.home}/example-data/books.xml</str>
+	      <str name="datafile">${solr.solr.home}/example-data/albums.xml</str>
 	    </listener>	  			
 	</updateHandler>
 	<query>
