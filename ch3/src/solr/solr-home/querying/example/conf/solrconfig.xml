@@ -32,15 +32,15 @@
 		<requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048000" formdataUploadLimitInKB="2048" />
 		<httpCaching never304="true" />
 	</requestDispatcher>
-	<requestHandler name="/select" class="solr.SearchHandler" default="true">
+	<requestHandler name="/query" class="solr.SearchHandler" default="true">
 		<lst name="defaults">
-			<str name="sort">title asc</str>
 			<str name="echoParams">explicit</str>
 			<int name="rows">10</int>
 			<str name="q">*:*</str>
-			<bool name="facet">false</bool>
 		</lst>
 	</requestHandler>
+	
+	<!-- Enable the analysis page in the administration console -->
 	<requestHandler name="/analysis/field"  startup="lazy" class="solr.FieldAnalysisRequestHandler" />
 	<requestHandler name="/update" class="solr.UpdateRequestHandler"/>
 	<requestHandler name="/admin/" class="solr.admin.AdminHandlers" />
