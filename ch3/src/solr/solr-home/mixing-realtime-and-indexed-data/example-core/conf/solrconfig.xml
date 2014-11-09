@@ -18,6 +18,14 @@
 		<enableLazyFieldLoading>true</enableLazyFieldLoading>
 		<queryResultWindowSize>20</queryResultWindowSize>
 		<queryResultMaxDocsCached>200</queryResultMaxDocsCached>
+		
+		<!-- 
+	    	This event listener will be in charge of automatically load the sample data on Solr startup 
+	    -->
+	    <listener event="firstSearcher" class="org.gazzax.labs.solr.ase.ch3.listener.SolrStartupListener">
+	      <str name="datafile">${solr.solr.home}/example-data/books.xml</str>
+	    </listener>	  
+		
 		<useColdSearcher>false</useColdSearcher>
 		<maxWarmingSearchers>2</maxWarmingSearchers>
 	</query>  	
