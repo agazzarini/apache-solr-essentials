@@ -108,9 +108,9 @@
 		<field name="new_price">11.50</field>
 	</doc>
 	<doc>
-		<field name="id">13</field>
-		<field name="title">Yngwie Malmsteen</field>
-		<field name="artist">Eclipse</field>
+		<field name="id">14</field>
+		<field name="title">Eclipse</field>
+		<field name="artist">Yngwie Malmsteen</field>
 		<field name="genre">Heavy Metal</field>
 		<field name="genre">Heavy metal</field>
 		<field name="genre">Neoclassical metal</field>
@@ -122,7 +122,7 @@
 		<field name="new_price">11.50</field>
 	</doc>
 	<doc>
-		<field name="id">13</field>
+		<field name="id">15</field>
 		<field name="title">The Story of Rock</field>
 		<field name="artist">Steve Vai</field>
 		<field name="genre">Hard Rock</field>
@@ -133,7 +133,7 @@
 		<field name="new_price">22.50</field>
 	</doc>
 	<doc>
-		<field name="id">14</field>
+		<field name="id">16</field>
 		<field name="title">Alien Love Secrets</field>
 		<field name="artist">Steve Vai</field>
 		<field name="genre">Rock</field>
@@ -142,7 +142,7 @@
 		<field name="new_price">11.50</field>
 	</doc>
 	<doc>
-		<field name="id">15</field>
+		<field name="id">17</field>
 		<field name="title">Awake</field>
 		<field name="artist">Dream Theater</field>
 		<field name="genre">Progressive Rock</field>
@@ -152,7 +152,7 @@
 		<field name="new_price">12.50</field>
 	</doc>
 	<doc>
-		<field name="id">16</field>
+		<field name="id">18</field>
 		<field name="title">Images and Words</field>
 		<field name="artist">Dream Theater</field>
 		<field name="genre">Progressive Rock</field>
@@ -162,7 +162,7 @@
 		<field name="new_price">12.50</field>
 	</doc>
 	<doc>
-		<field name="id">17</field>
+		<field name="id">19</field>
 		<field name="title">Octavarium</field>
 		<field name="artist">Dream Theater</field>
 		<field name="genre">Progressive Rock</field>
@@ -172,7 +172,7 @@
 		<field name="new_price">12.50</field>
 	</doc>
 	<doc>
-		<field name="id">18</field>
+		<field name="id">20</field>
 		<field name="title">Selling England by the Pound</field>
 		<field name="artist">Genesis</field>
 		<field name="genre">Progressive Rock</field>
@@ -181,7 +181,7 @@
 		<field name="new_price">10.50</field>
 	</doc>
 	<doc>
-		<field name="id">19</field>
+		<field name="id">21</field>
 		<field name="title">The Lamb Lies Down on Broadway</field>
 		<field name="artist">Genesis</field>
 		<field name="genre">Progressive Rock</field>
@@ -190,7 +190,7 @@
 		<field name="new_price">7.50</field>
 	</doc>
 	<doc>
-		<field name="id">19</field>
+		<field name="id">22</field>
 		<field name="title">Us</field>
 		<field name="artist">Peter Gabriel</field>
 		<field name="genre">Progressive Rock</field>
@@ -199,7 +199,7 @@
 		<field name="new_price">10.50</field>
 	</doc>
 	<doc>
-		<field name="id">20</field>
+		<field name="id">23</field>
 		<field name="title">Up</field>
 		<field name="artist">Peter Gabriel</field>
 		<field name="genre">Progressive Rock</field>
@@ -208,7 +208,7 @@
 		<field name="new_price">11.50</field>
 	</doc>
 	<doc>
-		<field name="id">21</field>
+		<field name="id">24</field>
 		<field name="title">Delicate Sound of Thunder</field>
 		<field name="artist">Pink Floyd</field>
 		<field name="genre">Pop</field>
@@ -219,7 +219,7 @@
 		<field name="new_price">13.50</field>
 	</doc>
 	<doc>
-		<field name="id">22</field>
+		<field name="id">25</field>
 		<field name="title">Ummagumma</field>
 		<field name="artist">Pink Floyd</field>
 		<field name="genre">Rock</field>

@@ -367,9 +367,9 @@
 	</build>
 	<profiles>
 		<profile>
-			<id>query-parsers</id>
+			<id>querying</id>
 			<properties>
-				<example.core.dir>query-parsers</example.core.dir>
+				<example.core.dir>querying</example.core.dir>
 			</properties>
 		</profile>
 		<profile>

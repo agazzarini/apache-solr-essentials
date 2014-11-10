@@ -17,7 +17,7 @@
 	    	This event listener will be in charge of automatically load the sample data on Solr startup 
 	    -->
 	    <listener event="firstSearcher" class="org.gazzax.labs.solr.ase.ch3.listener.SolrStartupListener">
-	      <str name="datafile">${solr.solr.home}/example-data/musicians_and_songs.xml</str>
+			<str name="datafile">${solr.solr.home}/example-data/musicians_and_songs.xml</str>
 	    </listener>	   
 	</updateHandler>
 	<query>
@@ -38,11 +38,11 @@
     	<requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
     	<httpCaching lastModifiedFrom="openTime" etagSeed="Solr" />
     </requestDispatcher>
-    
-    <!-- This is the only search handler. 
-    	 Note the invariants section that forces some parameters (especially 
-    	 the wt which is set "autocomplete", the name we assigned to the custom
-    	 response writer)    
+    <!-- 
+    	This is the only search handler. 
+    	Note the invariants section that forces some parameters (especially 
+    	the wt which is set "autocomplete", the name we assigned to the custom
+    	response writer)    
     -->
 	<requestHandler name="/auto" class="solr.SearchHandler" default="true">
     	<lst name="defaults">

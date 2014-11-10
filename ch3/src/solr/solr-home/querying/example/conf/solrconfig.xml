@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config>
 	<luceneMatchVersion>LUCENE_48</luceneMatchVersion>
-	<lib dir="/work/workspaces/apache-solr-essentials/apache-solr-essentials/ch2/index-your-data/target/" regex=".*\.jar" />
+	<lib dir="${project.lib.dir}" regex=".*\.jar" />
 	<dataDir>${solr.data.dir}/${solr.core.name}/data</dataDir>
 	<directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}" />
 	<codecFactory class="solr.SchemaCodecFactory" />
@@ -10,6 +10,11 @@
 		<lockType>${solr.lock.type:native}</lockType>
 	</indexConfig>
 	<updateHandler class="solr.DirectUpdateHandler2">
+		<!-- Update log needed for NRT search -->
+		<updateLog>
+  			<str name="dir">${solr.data.dir}/${solr.core.name}/ulogs</str>
+		</updateLog> 
+		
 		<!-- 
 	    	This event listener will be in charge of automatically load the sample data on Solr startup 
 	    -->
@@ -32,11 +37,160 @@
 		<requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048000" formdataUploadLimitInKB="2048" />
 		<httpCaching never304="true" />
 	</requestDispatcher>
-	<requestHandler name="/query" class="solr.SearchHandler" default="true">
+
+	<!-- 
+		A first example of standard request handler with no parameter set 
+	-->
+	<requestHandler name="/query" class="solr.SearchHandler">
 		<lst name="defaults">
 			<str name="echoParams">explicit</str>
 			<int name="rows">10</int>
 			<str name="q">*:*</str>
+		</lst>
+	</requestHandler>
+	
+	<!-- 
+		A SearchHandler / StandardRequestHandler that force faceting using the invariants parameters section
+	-->
+	<requestHandler name="/facets" class="solr.SearchHandler">
+		<lst name="invariants">
+			<bool name="facet">true</bool>
+			<str name="facet.field">genre</str>
+			<str name="facet.field">released</str>
+			<str name="facet.field">artist</str>
+			<str name="facet.field">artist</str>
+			<str name="facet.mincount">1</str>
+						
+			<!-- This setting is valid only for the genre facet -->
+			<str name="f.genre.facet.limit">10</str>			
+		</lst>
+		<lst name="defaults">
+			<str name="echoParams">explicit</str>
+			<int name="rows">10</int>
+			<str name="q">*:*</str>
+		</lst>		
+	</requestHandler>
+
+	<!-- 
+		A SearchHandler / StandardRequestHandler that force a filter using the append parameter section
+	-->
+	<requestHandler name="/jazz" class="solr.SearchHandler">
+		<lst name="appends">
+			<str name="fq">genre:Jazz</str>
+		</lst>
+		<lst name="defaults">
+			<str name="echoParams">explicit</str>
+			<int name="rows">10</int>
+			<str name="q">*:*</str>
+		</lst>		
+	</requestHandler>
+
+	<!-- 
+		A SearchHandler / StandardRequestHandler that force the highligth feature.
+	-->
+	<requestHandler name="/highlight" class="solr.SearchHandler">
+		<lst name="invariants">
+			<bool name="hl">true</bool>
+		</lst>
+		<lst name="defaults">
+			<str name="echoParams">explicit</str>
+			<int name="rows">10</int>
+			<str name="q">*:*</str>
+			<str name="hl.fl">title,artist</str>
+			<str name="hl.snippets">2</str>
+		</lst>		
+	</requestHandler>
+
+	
+	<!-- 
+		A SearchHandler / StandardRequestHandler that uses the DisMax query parser 
+	-->
+	<requestHandler name="/glike1" class="solr.SearchHandler">
+		<lst name="invariants">
+			<bool name="defType">dismax</bool>
+		</lst>
+		<lst name="defaults">
+			<str name="echoParams">explicit</str>
+			<int name="rows">10</int>
+			<str name="q.alt">*:*</str>
+			<!-- 
+				A default set of query fields with corresponding boosts.
+			-->
+			<str name="qf">
+				title^100
+				artist^10
+			</str>
+			<str name="pf">
+				title^1000
+				artist^100
+			</str>	
+			<int name="ps">3</int>
+			<int name="qs">3</int>
+			<float name="tie">0.1</float>
+			<bool name="facet">true</bool>
+			<str name="facet.field">genre</str>
+			<str name="facet.field">released</str>
+			<str name="facet.field">artist</str>
+			<str name="facet.field">artist</str>
+			<str name="facet.mincount">1</str>				
+		</lst>		
+	</requestHandler>	
+
+	<!-- 
+		A SearchHandler / StandardRequestHandler that uses the eDisMax query parser 
+	-->
+	<requestHandler name="/glike2" class="solr.SearchHandler">
+		<lst name="invariants">
+			<bool name="defType">edismax</bool>
+		</lst>
+		<lst name="defaults">
+			<str name="echoParams">explicit</str>
+			<int name="rows">10</int>
+			<str name="q.alt">*:*</str>
+			<str name="qf">
+				title^100
+				artist^10
+			</str>
+			<str name="pf">
+				title^1000
+				artist^100
+			</str>	
+			<int name="ps">3</int>
+			<int name="qs">3</int>
+			<float name="tie">0.1</float>
+			<bool name="facet">true</bool>
+			<str name="facet.field">genre</str>
+			<str name="facet.field">released</str>
+			<str name="facet.field">artist</str>
+			<str name="facet.field">artist</str>
+			<str name="facet.mincount">1</str>					
+		</lst>		
+	</requestHandler>	
+
+	<!-- 
+		MoreLikeThis RequestHandler. Similar documents here is very simple, 
+		just based on genre attribute 
+	 -->
+	<requestHandler name="/morelikethis" class="solr.MoreLikeThisHandler" >
+		<lst name="defaults">
+			<str name="echoParams">explicit</str>
+			<str name="mlt">true</str>
+			<str name="mlt.match.include">false</str>
+			<str name="mlt.fl">artist,genre</str>
+			<str name="mlt.qf">artist^10,genre</str>
+			<str name="mlt.mintf">1</str>
+			<str name="mlt.mindf">2</str>
+			<str name="mlt.boost">true</str>
+			<str name="rows">10</str>			
+		</lst>		
+	</requestHandler>
+
+	<!-- NRT Get handler -->
+	<requestHandler name="/get" class="solr.RealTimeGetHandler">
+		<lst name="defaults">
+			<str name="omitHeader">true</str>
+			<str name="wt">json</str>
+			<str name="indent">true</str>
 		</lst>
 	</requestHandler>
 	
