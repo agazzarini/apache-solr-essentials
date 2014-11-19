@@ -1,0 +1,231 @@
+<add commitWithin="1000">
+	<doc>
+		<field name="id">1</field>
+		<field name="title">A Modern Jazz Symposium of Music and Poetry</field>
+		<field name="artist">Charles Mingus</field>
+		<field name="genre">Jazz</field>
+		<field name="released">1957</field>
+		<field name="old_price">10.0</field>
+		<field name="new_price">12.1</field>
+	</doc>
+	<doc>
+		<field name="id">2</field>
+		<field name="title">Where Jazz meets Poetry</field>
+		<field name="artist">United Artists</field>		
+		<field name="genre">Jazz</field>
+		<field name="released">1976</field>
+		<field name="old_price">9.99</field>
+		<field name="new_price">11.2</field>
+	</doc>
+	<doc>
+		<field name="id">3</field>
+		<field name="title">I'm In The Mood For Love</field>
+		<field name="artist">Charlie Parker</field>
+		<field name="genre">Jazz</field>
+		<field name="released">1981</field>
+		<field name="old_price">5.99</field>
+		<field name="new_price">4.99</field>
+	</doc>	
+	<doc>
+		<field name="id">4</field>
+		<field name="title">Weather Report</field>
+		<field name="artist">Weather Report</field>
+		<field name="genre">Fusion</field>
+		<field name="released">1971</field>
+		<field name="old_price">7.99</field>
+		<field name="new_price">6.99</field>
+	</doc>	
+	<doc>
+		<field name="id">5</field>
+		<field name="title">Heavy Weather</field>
+		<field name="artist">Weather Report</field>
+		<field name="genre">Fusion</field>
+		<field name="released">1977</field>
+		<field name="old_price">7.99</field>
+		<field name="new_price">6.99</field>
+	</doc>			
+	<doc>
+		<field name="id">6</field>
+		<field name="title">Tutu</field>
+		<field name="artist">Miles Davis</field>
+		<field name="genre">Fusion</field>
+		<field name="released">1986</field>
+		<field name="old_price">6.00</field>
+		<field name="new_price">6.99</field>
+	</doc>						
+	<doc>
+		<field name="id">7</field>
+		<field name="title">School Days</field>
+		<field name="artist">Stankey Clarke</field>
+		<field name="genre">Fusion</field>
+		<field name="released">1976</field>
+		<field name="old_price">5.50</field>
+		<field name="new_price">5.50</field>
+	</doc>				
+	<doc>
+		<field name="id">8</field>
+		<field name="title">Rock the Nations</field>
+		<field name="artist">Saxon</field>
+		<field name="genre">Rock</field>
+		<field name="released">1986</field>
+		<field name="old_price">10.50</field>
+		<field name="new_price">8.50</field>
+	</doc>			
+	<doc>
+		<field name="id">9</field>
+		<field name="title">Piece of Mind</field>
+		<field name="artist">Iron Maiden</field>
+		<field name="genre">Heavy Metal</field>
+		<field name="released">1983</field>
+		<field name="old_price">11.50</field>
+		<field name="new_price">6.50</field>
+	</doc>			
+	<doc>
+		<field name="id">10</field>
+		<field name="title">Powerslave</field>
+		<field name="artist">Iron Maiden</field>
+		<field name="genre">Heavy Metal</field>
+		<field name="released">1984</field>
+		<field name="old_price">11.50</field>
+		<field name="new_price">6.50</field>
+	</doc>			
+	<doc>
+		<field name="id">11</field>
+		<field name="title">Seventh Son of a Seventh Son</field>
+		<field name="artist">Iron Maiden</field>
+		<field name="genre">Heavy Metal</field>
+		<field name="released">1988</field>
+		<field name="old_price">12.50</field>
+		<field name="new_price">11.50</field>
+	</doc>
+	<doc>
+		<field name="id">12</field>
+		<field name="title">Girls, Girls, Girls</field>
+		<field name="artist">Motley Crue</field>
+		<field name="genre">Rock</field>
+		<field name="released">1987</field>
+		<field name="old_price">12.50</field>
+		<field name="new_price">11.50</field>
+	</doc>
+	<doc>
+		<field name="id">14</field>
+		<field name="title">Eclipse</field>
+		<field name="artist">Yngwie Malmsteen</field>
+		<field name="genre">Heavy Metal</field>
+		<field name="genre">Heavy metal</field>
+		<field name="genre">Neoclassical metal</field>
+		<field name="genre">Pop metal</field>
+		<field name="genre">Hair metal</field>
+		<field name="genre">Hard rock</field>
+		<field name="released">1990</field>
+		<field name="old_price">12.50</field>
+		<field name="new_price">11.50</field>
+	</doc>
+	<doc>
+		<field name="id">15</field>
+		<field name="title">The Story of Rock</field>
+		<field name="artist">Steve Vai</field>
+		<field name="genre">Hard Rock</field>
+		<field name="genre">Instrumental Rock</field>
+		<field name="genre">Progressive Rock</field>
+		<field name="released">2012</field>
+		<field name="old_price">20.50</field>
+		<field name="new_price">22.50</field>
+	</doc>
+	<doc>
+		<field name="id">16</field>
+		<field name="title">Alien Love Secrets</field>
+		<field name="artist">Steve Vai</field>
+		<field name="genre">Rock</field>
+		<field name="released">1995</field>
+		<field name="old_price">15.50</field>
+		<field name="new_price">11.50</field>
+	</doc>
+	<doc>
+		<field name="id">17</field>
+		<field name="title">Awake</field>
+		<field name="artist">Dream Theater</field>
+		<field name="genre">Progressive Rock</field>
+		<field name="genre">Progressive Metal</field>
+		<field name="released">1994</field>
+		<field name="old_price">12.50</field>
+		<field name="new_price">12.50</field>
+	</doc>
+	<doc>
+		<field name="id">18</field>
+		<field name="title">Images and Words</field>
+		<field name="artist">Dream Theater</field>
+		<field name="genre">Progressive Rock</field>
+		<field name="genre">Progressive Metal</field>
+		<field name="released">1992</field>
+		<field name="old_price">12.50</field>
+		<field name="new_price">12.50</field>
+	</doc>
+	<doc>
+		<field name="id">19</field>
+		<field name="title">Octavarium</field>
+		<field name="artist">Dream Theater</field>
+		<field name="genre">Progressive Rock</field>
+		<field name="genre">Progressive Metal</field>
+		<field name="released">2005</field>
+		<field name="old_price">12.50</field>
+		<field name="new_price">12.50</field>
+	</doc>
+	<doc>
+		<field name="id">20</field>
+		<field name="title">Selling England by the Pound</field>
+		<field name="artist">Genesis</field>
+		<field name="genre">Progressive Rock</field>
+		<field name="released">1973</field>
+		<field name="old_price">11.50</field>
+		<field name="new_price">10.50</field>
+	</doc>
+	<doc>
+		<field name="id">21</field>
+		<field name="title">The Lamb Lies Down on Broadway</field>
+		<field name="artist">Genesis</field>
+		<field name="genre">Progressive Rock</field>
+		<field name="released">1974</field>
+		<field name="old_price">8.50</field>
+		<field name="new_price">7.50</field>
+	</doc>
+	<doc>
+		<field name="id">22</field>
+		<field name="title">Us</field>
+		<field name="artist">Peter Gabriel</field>
+		<field name="genre">Progressive Rock</field>
+		<field name="released">1992</field>
+		<field name="old_price">8.50</field>
+		<field name="new_price">10.50</field>
+	</doc>
+	<doc>
+		<field name="id">23</field>
+		<field name="title">Up</field>
+		<field name="artist">Peter Gabriel</field>
+		<field name="genre">Progressive Rock</field>
+		<field name="released">2002</field>
+		<field name="old_price">11.50</field>
+		<field name="new_price">11.50</field>
+	</doc>
+	<doc>
+		<field name="id">24</field>
+		<field name="title">Delicate Sound of Thunder</field>
+		<field name="artist">Pink Floyd</field>
+		<field name="genre">Pop</field>
+		<field name="genre">Rock</field>
+		<field name="genre">Progressive Rock</field>
+		<field name="released">1988</field>
+		<field name="old_price">13.99</field>
+		<field name="new_price">13.50</field>
+	</doc>
+	<doc>
+		<field name="id">25</field>
+		<field name="title">Ummagumma</field>
+		<field name="artist">Pink Floyd</field>
+		<field name="genre">Rock</field>
+		<field name="genre">Progressive Rock</field>
+		<field name="released">1969</field>
+		<field name="old_price">13.99</field>
+		<field name="new_price">13.50</field>
+	</doc>
+</add>
