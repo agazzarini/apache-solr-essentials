@@ -5,14 +5,15 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.solr.common.SolrInputDocument;
-
-/**
+ 
+/** 
  * Utility stuff used in tests.
  * 
  * @author Andrea Gazzarini
  * @since 1.0
  */
 public abstract class TestUtils {
+	public final static String SOLR_URI = "http://127.0.0.1:8983/solr/example/";
 	final static Random RANDOMIZER = new Random();
 		
 	/**
@@ -53,8 +54,6 @@ public abstract class TestUtils {
 		octavarium.addField("genre", "Progressive Metal");
 		
 		octavarium.setField("released", "2005");
-		octavarium.setField("old_price", 12.50);
-		octavarium.setField("new_price", 11.00);
 		
 		ALBUMS.add(octavarium);
 		

@@ -1,5 +1,6 @@
 package org.gazzax.labs.solr.ase.ch3.search;
 
+import static org.gazzax.labs.solr.ase.ch3.TestUtils.SOLR_URI;
 import static org.gazzax.labs.solr.ase.ch3.TestUtils.sampleData;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -16,7 +17,9 @@ import org.apache.solr.client.solrj.response.FacetField;
 import org.apache.solr.client.solrj.response.FacetField.Count;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocumentList;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * This integration test demonstrates the usage of Solrj for issuing queries.
@@ -38,10 +41,31 @@ public class SearchSearchSearchITCase {
 	 */
 	@BeforeClass
 	public static void indexData() throws SolrServerException, IOException {
-		INDEXER = new ConcurrentUpdateSolrServer("http://127.0.0.1:8080/solr/example", 2, 1);
+		// 1. Create a proxy indexer 
+		INDEXER = new ConcurrentUpdateSolrServer(SOLR_URI, 2, 1);
+
+		// 2. Index sample data
 		INDEXER.add(sampleData());
 		
-		SEARCHER = new HttpSolrServer("http://127.0.0.1:8080/solr/example");
+		// 3. Commit changes
+		INDEXER.commit();
+		
+		// 4. Create a proxy searcher
+		SEARCHER = new HttpSolrServer(SOLR_URI);
+	}
+	
+	/**
+	 * Removes all documents from Solr.
+	 * 
+	 * @throws Exception hopefully never, otherwise a second run of this test will fail.
+	 */
+	@AfterClass
+	public static void cleanUp() throws Exception {
+		INDEXER.deleteByQuery("*:*");
+		INDEXER.commit();
+		INDEXER.shutdown();
+		
+		SEARCHER.shutdown();
 	}
 	
 	/**
@@ -49,6 +73,7 @@ public class SearchSearchSearchITCase {
 	 * 
 	 * @throws Exception hopefully never, otherwise the test fails.
 	 */
+	@Test
 	public void selectAll() throws Exception {
 		// 1. Prepare the Query object
 		// The query string can be directly injected in the constructor
@@ -84,6 +109,7 @@ public class SearchSearchSearchITCase {
 	 * 
 	 * @throws Exception hopefully never, otherwise the test fails.
 	 */
+	@Test
 	public void facets() throws Exception {
 		// 1. Prepare the Query object
 		// The query string can be directly injected in the constructor
@@ -136,8 +162,9 @@ public class SearchSearchSearchITCase {
 	 * 
 	 * @throws Exception hopefully never, otherwise the test fails.
 	 */
+	@Test
 	public void withCallback() throws Exception {
-		final int expectedWindowSize = 4;
+		final int expectedWindowSize = 2;
 		
 		// 1. Prepare the Query object
 		// The query string can be directly injected in the constructor. 
@@ -149,7 +176,7 @@ public class SearchSearchSearchITCase {
 		query.setRows(expectedWindowSize);
 		
 		// 2. creates a callback handler
-		final SampleStreamingResponseCallback callbackHandler = new SampleStreamingResponseCallback();
+		final SampleStreamingResponseCallback callbackHandler = new SampleStreamingResponseCallback(4);
 		
 		// 3. Note that in this case we are not invoking "query" but "queryAndStreamResponse"
 		// That requires the callback handler previously defined. 

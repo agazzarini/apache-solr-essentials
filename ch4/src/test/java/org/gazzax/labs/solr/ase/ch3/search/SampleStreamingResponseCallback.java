@@ -16,7 +16,16 @@ import org.apache.solr.common.SolrDocument;
 class SampleStreamingResponseCallback extends StreamingResponseCallback {
 
 	private int howManyDocumentsInTheCurrentWindow = 0;
-
+	private final int expectedNumFound;
+	
+	/**
+	 * Builds a new {@link StreamingResponseCallback} with the expected number of results.
+	 * 
+	 * @param expectedNumFound the expected number of results.
+	 */
+	SampleStreamingResponseCallback(final int expectedNumFound) {
+		this.expectedNumFound = expectedNumFound;
+	}
 	/**
 	 * This method is called for each document in query response.
 	 * 
@@ -40,7 +49,7 @@ class SampleStreamingResponseCallback extends StreamingResponseCallback {
 	@Override
 	public void streamDocListInfo(final long numFound, final long start, final Float maxScore) {
 		// Make some assertion about metadata
-		assertEquals(sampleData(), numFound);
+		assertEquals(expectedNumFound, numFound);
 		assertEquals(0, start);
 	}
 	
