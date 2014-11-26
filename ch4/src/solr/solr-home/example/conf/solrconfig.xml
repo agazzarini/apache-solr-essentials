@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config>
 	<luceneMatchVersion>LUCENE_48</luceneMatchVersion>
-	<lib dir="${project.lib.dir}" regex=".*\.jar" />
 	<dataDir>${solr.data.dir}/${solr.core.name}/data</dataDir>
 	<directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}" />
 	<codecFactory class="solr.SchemaCodecFactory" />
@@ -9,19 +8,7 @@
 	<indexConfig>
 		<lockType>${solr.lock.type:native}</lockType>
 	</indexConfig>
-	<updateHandler class="solr.DirectUpdateHandler2">
-		<!-- Update log needed for NRT search -->
-		<updateLog>
-  			<str name="dir">${solr.data.dir}/${solr.core.name}/ulogs</str>
-		</updateLog> 
-		
-		<!-- 
-	    	This event listener will be in charge of automatically load the sample data on Solr startup 
-	    -->
-	    <listener event="firstSearcher" class="org.gazzax.labs.solr.ase.ch3.listener.SolrStartupListener">
-	      <str name="datafile">${solr.solr.home}/example-data/albums.xml</str>
-	    </listener>	  			
-	</updateHandler>
+	<updateHandler class="solr.DirectUpdateHandler2"/>
 	<query>
 		<maxBooleanClauses>1024</maxBooleanClauses>
 		<filterCache class="solr.FastLRUCache" size="512" initialSize="512" autowarmCount="0" />
@@ -33,7 +20,7 @@
 		<useColdSearcher>false</useColdSearcher>
 		<maxWarmingSearchers>2</maxWarmingSearchers>
 	</query>  	
-	<requestDispatcher handleSelect="false">
+	<requestDispatcher handleSelect="true">
 		<requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048000" formdataUploadLimitInKB="2048" />
 		<httpCaching never304="true" />
 	</requestDispatcher>
@@ -41,7 +28,7 @@
 	<!-- 
 		A first example of standard request handler with no parameter set 
 	-->
-	<requestHandler name="/query" class="solr.SearchHandler">
+	<requestHandler name="/h1" class="solr.SearchHandler">
 		<lst name="defaults">
 			<str name="echoParams">explicit</str>
 			<int name="rows">10</int>
@@ -105,9 +92,9 @@
 	<!-- 
 		A SearchHandler / StandardRequestHandler that uses the DisMax query parser 
 	-->
-	<requestHandler name="/glike1" class="solr.SearchHandler">
+	<requestHandler name="/h2" class="solr.SearchHandler">
 		<lst name="invariants">
-			<bool name="defType">dismax</bool>
+			<str name="defType">dismax</str>
 		</lst>
 		<lst name="defaults">
 			<str name="echoParams">explicit</str>
@@ -141,7 +128,7 @@
 	-->
 	<requestHandler name="/glike2" class="solr.SearchHandler">
 		<lst name="invariants">
-			<bool name="defType">edismax</bool>
+			<str name="defType">edismax</str>
 		</lst>
 		<lst name="defaults">
 			<str name="echoParams">explicit</str>

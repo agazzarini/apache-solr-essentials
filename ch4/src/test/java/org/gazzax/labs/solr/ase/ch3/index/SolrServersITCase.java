@@ -1,10 +1,12 @@
 package org.gazzax.labs.solr.ase.ch3.index;
 
+import static org.gazzax.labs.solr.ase.ch3.TestUtils.SOLR_URI;
 import static org.gazzax.labs.solr.ase.ch3.TestUtils.sampleData;
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
 import java.util.List;
-
+ 
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -36,8 +38,15 @@ public class SolrServersITCase {
 	 */
 	@Test
 	public void embeddedSolrServer() throws Exception {
-		// 1. Create a new (local) container using "solr.solr.home" system property.
+		// 1. Create a new (local) container using "solr.solr.home" and "solr.data.dir" system property.
+		// Note that we need to define a dedicated solr.data.dir for this test method because
+		// otherwise we would end in a lock conflict (the embedded Solr instance is running) 
+		System.setProperty("solr.solr.home", "src/solr/solr-home");
+		System.setProperty("solr.data.dir", new File("target/solr-embedded-solr").getAbsolutePath());
 		CoreContainer container = new CoreContainer();
+		container.load();
+		
+		System.out.println(container.getAllCoreNames());
 		
 		// 2. Create a new instance of (Embedded)SolrServer 
 		solr = new EmbeddedSolrServer(container, "example");
@@ -63,7 +72,7 @@ public class SolrServersITCase {
 	@Test
 	public void httpSolrServer() throws Exception {
 		// 1. Create a new instance of HttpSolrServer 
-		solr = new HttpSolrServer("http://127.0.0.1:8080/solr/example");
+		solr = new HttpSolrServer(SOLR_URI);
 		
 		// 2. Create some data
 		final List<SolrInputDocument> albums = sampleData();
@@ -85,9 +94,9 @@ public class SolrServersITCase {
 	 */
 	@Test
 	public void loadBalancedHttpSolrServer() throws Exception {
-		final String firstSolrUrl = "http://127.0.0.1:8080/solr/example";
-		final String secondSolrUrl = "http://127.0.0.1:8080/solr/example";
-		final String thirdSolrUrl = "http://127.0.0.1:8080/solr/example";
+		final String firstSolrUrl = SOLR_URI;
+		final String secondSolrUrl = SOLR_URI;
+		final String thirdSolrUrl = SOLR_URI;
 		
 		// 1. Create a new instance of HttpSolrServer 
 		// Note that we are simply repeating the same server three times, in order to "simulate" a
@@ -118,7 +127,6 @@ public class SolrServersITCase {
 	 */
 	@Test
 	public void concurrentUpdateSolrServer() throws Exception {
-		final String solrUrl = "http://127.0.0.1:8080/solr/example";
 		final int bufferSize = 2; // commit each 2 albums
 		final int threadsNo = 2; // Use two indexer threads
 		
@@ -126,7 +134,7 @@ public class SolrServersITCase {
 		// Note that we are simply repeating the same server three times, in order to "simulate" a
 		// scenario with three searchers.
 		// In a real context we would have three different urls.
-		solr = new ConcurrentUpdateSolrServer(solrUrl, bufferSize, threadsNo);		
+		solr = new ConcurrentUpdateSolrServer(SOLR_URI, bufferSize, threadsNo);		
 		
 		// 2. Create some data
 		final List<SolrInputDocument> albums = sampleData();
@@ -149,6 +157,7 @@ public class SolrServersITCase {
 	@After
 	public void tearDown() throws Exception {
 		solr.deleteByQuery("*:*");
+		solr.commit();
 	}
 	
 	/**
@@ -158,7 +167,7 @@ public class SolrServersITCase {
 	 */
 	void verify() throws SolrServerException {
 		final SolrQuery query = new SolrQuery("*:*");
-		query.setRequestHandler("/fielded");
+		query.setRequestHandler("/h1");
 		
 		final QueryResponse response = solr.query(query);
 		assertEquals(sampleData().size(), (int)response.getResults().getNumFound());
