@@ -107,7 +107,7 @@
 	-->
 	<requestHandler name="/glike1" class="solr.SearchHandler">
 		<lst name="invariants">
-			<bool name="defType">dismax</bool>
+			<str name="defType">dismax</str>
 		</lst>
 		<lst name="defaults">
 			<str name="echoParams">explicit</str>
@@ -141,7 +141,7 @@
 	-->
 	<requestHandler name="/glike2" class="solr.SearchHandler">
 		<lst name="invariants">
-			<bool name="defType">edismax</bool>
+			<str name="defType">edismax</str>
 		</lst>
 		<lst name="defaults">
 			<str name="echoParams">explicit</str>
