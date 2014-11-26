@@ -1,6 +1,5 @@
 package org.gazzax.labs.solr.ase.ch3.search;
 
-import static org.gazzax.labs.solr.ase.ch3.TestUtils.sampleData;
 import static org.junit.Assert.assertEquals;
 
 import org.apache.solr.client.solrj.StreamingResponseCallback;

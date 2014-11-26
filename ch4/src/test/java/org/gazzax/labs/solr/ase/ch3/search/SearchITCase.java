@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author Andrea Gazzarini
  * @since 1.0
  */
-public class SearchSearchSearchITCase {
+public class SearchITCase {
 	private static SolrServer INDEXER;
 	private static SolrServer SEARCHER;
 	
