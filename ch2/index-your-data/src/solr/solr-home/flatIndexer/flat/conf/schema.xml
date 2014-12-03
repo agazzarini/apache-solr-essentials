@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<schema name="A simple OPAC schema" version="1.5">
+<schema name="Apache Solr Essentials - Chapter 2: Index your data" version="1.5">
 	<types>
 		<fieldType name="string" class="solr.StrField" sortMissingLast="true" />
 	</types>

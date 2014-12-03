@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<schema name="A schema for demonstrating Solr / Lucene query parsers" version="1.5">
+<schema name="Apache Solr Essentials - Chapter 3: Search your data" version="1.5">
 	<types>
 		<fieldType name="code" class="solr.StrField" sortMissingLast="true" />
 		<fieldType name="int" class="solr.TrieIntField" precisionStep="8" positionIncrementGap="0"/>		
