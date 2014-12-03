@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.gazzax.labs.solr</groupId>
-	<artifactId>get-me-up-and-running</artifactId>
+	<artifactId>ch1-get-me-up-and-running</artifactId>
 	<version>1.0</version>
 	<name>Chapter 1 Project</name>
 	<properties>
