@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="Apache Solr Essentials - Chapter 5: Administering and tuning Solr" version="1.5">
+	<types>
+ 		<fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
+		<fieldType name="string" class="solr.StrField" sortMissingLast="true" />
+		<fieldType name="int" class="solr.TrieIntField" precisionStep="8" positionIncrementGap="0"/>	
+		<fieldType name="double" class="solr.TrieDoubleField" precisionStep="8" positionIncrementGap="0"/>	
+		<fieldType name="text" class="solr.TextField" omitNorms="true">
+			<analyzer>
+				<tokenizer class="solr.WhitespaceTokenizerFactory"/>
+				<filter class="solr.LowerCaseFilterFactory" />
+				<filter class="solr.WordDelimiterFilterFactory" 
+						generateWordParts="1" 
+						generateNumberParts="1" 
+						catenateWords="0" 
+						catenateNumbers="0" 
+						catenateAll="0" 
+						splitOnCaseChange="0" />
+			</analyzer>
+		</fieldType>	
+	</types>
+	<fields>
+		<field name="id" type="string" indexed="true" stored="true" required="true"/>
+		<field name="title" type="text" indexed="true" stored="true" required="true" termVectors="true"/>
+		<field name="artist" type="text" indexed="true" stored="true" required="true" termVectors="true"/>
+		<field name="genre" type="string" indexed="true" stored="true" required="true" multiValued="true"/>
+		<field name="released" type="int" indexed="true" stored="true" required="true" />
+		<field name="old_price" type="double" indexed="true" stored="true" />
+		<field name="new_price" type="double" indexed="true" stored="true" required="true" />	
+	   <field name="_version_" type="long" indexed="true" stored="true"/>	
+	</fields>
+	<uniqueKey>id</uniqueKey>
+</schema>
