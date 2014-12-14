@@ -1,0 +1,14 @@
+<!-- 
+	Old style: explicitly declares cores.
+	See https://wiki.apache.org/solr/Core%20Discovery%20%284.4%20and%20beyond%29
+ -->
+<!-- 
+<solr persistent="false" sharedLib="lib">
+	<cores adminPath="/admin/cores">
+		<core name="biblo" instanceDir="biblo"/>
+	</cores>
+</solr>
+-->
+<solr>
+	<!-- we don't need any parameter here for this example -->
+</solr>
