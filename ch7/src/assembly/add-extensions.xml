@@ -2,27 +2,36 @@
 	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
-	<id>ch7</id>
+	<id>dist</id>
 	<formats>
 		<format>dir</format>
 	</formats>
 	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>${project.basedir}/src/solr/solr-home</directory>
+			<outputDirectory>/</outputDirectory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</fileSet>		
+	</fileSets>		
 	<dependencySets>
 		<dependencySet>
-			<outputDirectory>/ch7/lib/</outputDirectory>
+			<outputDirectory>/example/lib/</outputDirectory>
 			<includes>
 				<include>*:*</include>
 			</includes>
 		</dependencySet>		
 		<dependencySet>
-			<outputDirectory>/ch7/lib/</outputDirectory>
+			<outputDirectory>/example/lib/</outputDirectory>
 			<includes>
 				<include>*:solr-dataimporthandler:*</include>
 			</includes>
 		</dependencySet>	
 		<dependencySet>
 			<useTransitiveDependencies>true</useTransitiveDependencies>
-			<outputDirectory>/ch7/lib/</outputDirectory>
+			<outputDirectory>/example/lib/</outputDirectory>
 			<includes>
 				<include>*:solr-dataimporthandler-extras:*</include>
 				<include>*:solr-cell:*</include>
@@ -33,13 +42,13 @@
 		<moduleSet>
 			<includeSubModules>true</includeSubModules>
 			<binaries>
-				<outputDirectory>/ch7/lib/</outputDirectory>
+				<outputDirectory>/example/lib/</outputDirectory>
 				<unpack>false</unpack>
 				<includeDependencies>true</includeDependencies>
 				<dependencySets>
           			<dependencySet>
           			<useTransitiveDependencies>true</useTransitiveDependencies>
-						<outputDirectory>/ch7/lib/</outputDirectory>
+						<outputDirectory>/example/lib/</outputDirectory>
 						<includes>
 							<include>*</include>
 						</includes>
