@@ -2,7 +2,6 @@
 <schema name="Apache Solr Essentials - Chapter 7: Solr Extensions" version="1.5">
 	<types>
 		<fieldType name="string" class="solr.StrField" sortMissingLast="true" />
-		<fieldType name="int" class="solr.TrieIntField" precisionStep="8" positionIncrementGap="0"/>	
 		<fieldType name="text" class="solr.TextField" omitNorms="true">
 			<analyzer>
 				<tokenizer class="solr.WhitespaceTokenizerFactory"/>
@@ -27,7 +26,7 @@
 		<field name="text" type="text" indexed="true" stored="true"/>
 		
 		<!-- CATCH-ALL field for other metadata fields -->
-		<dynamicField name="*" type="string" indexed="false" stored="true"/>
+		<dynamicField name="*" type="string" indexed="true" stored="true" multiValued="true"/>
 	</fields>
 	<uniqueKey>stream_name</uniqueKey>
 </schema>

@@ -28,6 +28,15 @@
 			<includes>
 				<include>*:solr-dataimporthandler:*</include>
 			</includes>
+		</dependencySet>
+		
+		<dependencySet>
+			<useTransitiveDependencies>true</useTransitiveDependencies>
+			<outputDirectory>/example/lib/</outputDirectory>
+			<includes>
+				<include>*:velocity-tools:*</include>
+				<include>*:velocity:*</include>
+			</includes>
 		</dependencySet>	
 		<dependencySet>
 			<useTransitiveDependencies>true</useTransitiveDependencies>
