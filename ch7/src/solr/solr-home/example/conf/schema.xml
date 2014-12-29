@@ -18,11 +18,16 @@
 		</fieldType>	
 	</types>
 	<fields>
-		<field name="id" type="string" indexed="true" stored="true" required="true"/>
-		<field name="title" type="text" indexed="true" stored="true" required="true" termVectors="true"/>
-		<field name="artist" type="text" indexed="true" stored="true" required="true" termVectors="true"/>
-		<field name="genre" type="string" indexed="true" stored="true" required="true" multiValued="true"/>
-		<field name="released" type="int" indexed="true" stored="true" required="true" />	
+		<field name="stream_name" type="string" indexed="true" stored="true" required="true"/>
+		
+		<!-- Default field name where SolrCell put all available metadata fieldnames -->
+		<field name="meta" type="string" indexed="true" stored="true" multiValued="true"/>
+		
+		<!-- "text" is the default name of the field holding extracted text -->
+		<field name="text" type="text" indexed="true" stored="true"/>
+		
+		<!-- CATCH-ALL field for other metadata fields -->
+		<dynamicField name="*" type="string" indexed="false" stored="true"/>
 	</fields>
-	<uniqueKey>id</uniqueKey>
+	<uniqueKey>stream_name</uniqueKey>
 </schema>
