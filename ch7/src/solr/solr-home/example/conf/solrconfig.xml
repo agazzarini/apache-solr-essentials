@@ -34,6 +34,16 @@
 		</lst>
 	</requestHandler>
 
+	<!-- 
+		DataImportHandler sample configuration
+		NOTE: this won't work!! We don't have a database here ;) so don't call it
+	 -->
+	 <requestHandler name="/import" class="org.apache.solr.handler.dataimport.DataImportHandler">
+		<lst name="defaults">
+			<str name="config">data-import-handler-sample-config.xml</str>
+		</lst>
+	</requestHandler>	
+
 	<!-- SolrCell extracting request handler -->
 	<requestHandler name="/update/extract" class="solr.extraction.ExtractingRequestHandler">
 		<lst name="defaults">

@@ -1,0 +1,66 @@
+<dataConfig>
+	<!-- 
+		A sample DIH configuration for gathering data from two nested tables called OUTERTABLE AND INNERTABLE.
+		Note that this is here only for example, it won't work with the sample instance as 
+		
+		- we don't have a database
+		- the configuration refers to non-existent Solr fields.
+	 -->
+	<dataSource
+		type="JdbcDataSource"
+		driver="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@192.168.1.21:1523:MYSID"
+		user="database-username"
+		name="datasource-name" 
+		password="y2kdlatn"/>
+	<!-- 
+		A sample javascript invoked by the Script Transformer. 
+		It is used for manipulating resultsets before populating SolrInputDocuments.
+		
+		The function accepts a single parameter which represents a row in the current ResultSet. 
+		Its content can be accessed using a Map-like iterface (get, put, remove).
+		
+		In this example a "Generalities" subject is assigned to the current document in case the 
+		database record doesn't have a valid subject (the SBJCT column is nullable).  
+		Clearly, this is just for giving an example about how to manipulate the record, as the same 
+		result could be obtained by simply declaring a default value for the "subject" field, in the Solr schema.  
+	-->
+	<script><![CDATA[
+		function assignDefaultSubject(row)    
+		{
+			var recordSubject = row.get('SBJCT');
+			if (recordSubject != null) 
+			{
+				.put('SBJCT', "Generalities");			
+			}
+
+			return row;
+		}
+	]]></script>	 
+	<document name="document-name">
+		<entity name="outer" dataSource="datasource-name" query="SELECT * FROM OUTERTABLE" onError="skip">
+			<!-- 
+				the "column" attribute is the database column name (or alias), 
+				the "name" attribute is the Solr name 
+				
+				In case the column name has the same value of the Solr field (case insensitve) the declaration can be omitted. 
+			-->
+			<field column="ID" name="solr-id"/> 
+			
+			<!-- This could be omitted -->
+			<field column="TITLE" name="title"/>
+			 
+			<field column="ISSUE_NUM" name="number"/> 
+			<field column="PUB_DATE" name="publication_date"/> 
+			<field column="PUB_YEAR" name="year"/> 
+			<field column="FILEPATH" name="path"/>
+			<!-- 
+				This is the inner table that has a 1:n relationship with the outer table. 
+				Note how we can use the ${entityName.columnName} form in order to use values from the outer query. 
+			 -->
+			<entity query="SELECT SBJCT FROM INNERTABLE WHERE OUTERTABLE_ID = ${outer.ID}" dataSource="datasource-name" onError="continue" transformer="script:assignDefaultSubject">
+			<field column="SBJCT" name="subject"/> 
+			</entity>
+		</entity>
+	</document>	
+</dataConfig>
