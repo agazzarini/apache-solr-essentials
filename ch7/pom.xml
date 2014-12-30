@@ -71,12 +71,6 @@
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-velocity</artifactId>
 			<version>4.8.0</version>
-<!-- 			<exclusions> -->
-<!-- 				<exclusion> -->
-<!-- 					<artifactId>de.l3s.boilerpipe</artifactId> -->
-<!-- 					<groupId></groupId> -->
-<!-- 				</exclusion> -->
-<!-- 			</exclusions> -->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.solr</groupId>
@@ -151,6 +145,11 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.solr</groupId>
+			<artifactId>solr-langid</artifactId>
+			<version>${solr.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

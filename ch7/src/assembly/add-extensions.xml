@@ -29,7 +29,12 @@
 				<include>*:solr-dataimporthandler:*</include>
 			</includes>
 		</dependencySet>
-		
+		<dependencySet>
+			<outputDirectory>/example/lib/</outputDirectory>
+			<includes>
+				<include>*:solr-langid:*</include>
+			</includes>
+		</dependencySet>		
 		<dependencySet>
 			<useTransitiveDependencies>true</useTransitiveDependencies>
 			<outputDirectory>/example/lib/</outputDirectory>
