@@ -4,7 +4,7 @@
 	<groupId>org.gazzax.labs.solr</groupId>
 	<artifactId>ch1-get-me-up-and-running</artifactId>
 	<version>1.0</version>
-	<name>Chapter1</name>
+	<name>Chapter 1</name>
 	<description>Apache Solr Essentials (Packt Publishing, 2015): Chapter 1 examples</description>
 	<properties>
 		<jdk.version>1.7</jdk.version>
