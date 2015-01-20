@@ -12,6 +12,6 @@
 <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.gazzax.labs.solr.ase.ch1.it.FirstQueryITCase"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="get-me-up-and-running"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ch1-get-me-up-and-running"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
 </launchConfiguration>
