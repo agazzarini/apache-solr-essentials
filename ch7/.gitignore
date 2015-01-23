@@ -3,7 +3,8 @@
 /.settings
 /.project
 /.classpath
- 
+/_rest_managed.json
+
 *.class
 
 # Package Files #
