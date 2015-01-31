@@ -40,7 +40,6 @@
 		</lst>
 	</requestHandler>
 	<requestHandler name="/analysis/field"  startup="lazy" class="solr.FieldAnalysisRequestHandler" />
-	<requestHandler name="/update" class="solr.UpdateRequestHandler"/>
 	<requestHandler name="/admin/" class="solr.admin.AdminHandlers" />
 	<admin>
 		<defaultQuery>*:*</defaultQuery>
