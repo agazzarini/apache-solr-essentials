@@ -3,7 +3,7 @@
 	<luceneMatchVersion>LUCENE_48</luceneMatchVersion>
 	<lib dir="${project.lib.dir}" regex=".*\.jar" />
 	<dataDir>${solr.data.dir}/${solr.core.name}/data</dataDir>
-	<directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}" />
+	<di rectoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}" />
 	<codecFactory class="solr.SchemaCodecFactory" />
 	<schemaFactory class="ClassicIndexSchemaFactory" />
 	<indexConfig>

@@ -26,12 +26,12 @@
 		Uncomment the following processor in order to enable language detection 
 	-->
 	<updateRequestProcessorChain name="langId">
-<!-- 		<processor -->
-<!-- 			class="org.apache.solr.update.processor.TikaLanguageIdentifierUpdateProcessorFactory"> -->
-<!-- 			<str name="langid.fl">text</str> -->
-<!-- 			<str name="langid.langField">language</str> -->
-<!-- 			<str name="langid.fallback">en</str> -->
-<!-- 		</processor> -->
+		<processor
+			class="org.apache.solr.update.processor.TikaLanguageIdentifierUpdateProcessorFactory">
+			<str name="langid.fl">text</str>
+			<str name="langid.langField">language</str>
+			<str name="langid.fallback">en</str>
+		</processor>
 		<processor class="solr.LogUpdateProcessorFactory" />
 		<processor class="solr.RunUpdateProcessorFactory" />
 	</updateRequestProcessorChain>

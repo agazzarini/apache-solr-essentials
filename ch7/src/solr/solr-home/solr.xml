@@ -9,6 +9,4 @@
 	</cores>
 </solr>
 -->
-<solr>
-	<!-- we don't need any parameter here for this example -->
-</solr>
+<solr/>

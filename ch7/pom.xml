@@ -70,7 +70,7 @@
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-velocity</artifactId>
-			<version>4.8.0</version>
+			<version>${solr.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.solr</groupId>
@@ -165,7 +165,6 @@
 							<solr.solr.home>${project.build.directory}/${project.artifactId}-${project.version}-dist</solr.solr.home>
 							<solr.data.dir>${project.build.directory}/solr</solr.data.dir>
 							<log4j.configuration>file://${basedir}/src/test/resources/log4j.xml</log4j.configuration>
-							<project.lib.dir>${basedir}/target</project.lib.dir>
 						</systemProperties>
 						<containerId>jetty8x</containerId>
 						<type>embedded</type>
