@@ -27,7 +27,13 @@
 		<field name="released" type="int" indexed="true" stored="true" required="true" />
 		<field name="old_price" type="double" indexed="true" stored="true" />
 		<field name="new_price" type="double" indexed="true" stored="true" required="true" />	
-	   <field name="_version_" type="long" indexed="true" stored="true"/>	
+	   	<field name="_version_" type="long" indexed="true" stored="true"/>
+	   	<field name="any_keyword" type="text" indexed="true" stored="false" multiValued="true"/>
+	   
+	   	<copyField source="title" dest="any_keyword"/>
+	   	<copyField source="artist" dest="any_keyword"/>
+	   	<copyField source="genre" dest="any_keyword"/>
+	   	
 	</fields>
 	<uniqueKey>id</uniqueKey>
 </schema>
