@@ -14,8 +14,9 @@ https://www.packtpub.com/big-data-and-business-intelligence/apache-solr-essentia
 
 ### Who This Book Is For
 
-    If you are a competent developer with experience of working with technologies similar to 
-    Apache Solr and want to develop efficient search applications, then this book is for you. 
+    If you are a competent developer with experience of working with technologies 
+    similar to Apache Solr and want to develop efficient search applications, 
+    then this book is for you. 
     Familiarity with Java programming language is required.
 
 ### Prerequisites
