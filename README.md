@@ -1,7 +1,9 @@
 Apache Solr Essentials 
 ======================
 Andrea Gazzarini  
-2015, PacktPublising  
+PACKT Publishing, 2015     
+ISBN 9781784399641   
+Paperback 185 pages  
 https://www.packtpub.com/big-data-and-business-intelligence/apache-solr-essentials
 
 ### About This Book
