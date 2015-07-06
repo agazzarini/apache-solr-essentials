@@ -49,7 +49,7 @@
 							<cargo.servlet.port>8983</cargo.servlet.port>
 							<solr.solr.home>${basedir}/src/solr/solr-home/${example.core.dir}</solr.solr.home>
 							<solr.data.dir>${project.build.directory}/solr</solr.data.dir>
-							<log4j.configuration>file://${basedir}/src/test/resources/log4j.xml</log4j.configuration>
+							<log4j.configuration>file:///${basedir}/src/test/resources/log4j.xml</log4j.configuration>
 							<project.lib.dir>${basedir}/target</project.lib.dir>
 						</systemProperties>
 						<containerId>jetty7x</containerId>
@@ -150,6 +150,12 @@
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-core</artifactId>
 			<version>${solr.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>jdk.tools</artifactId>
+					<groupId>jdk.tools</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 </project>
