@@ -63,7 +63,7 @@
 							<cargo.servlet.port>8983</cargo.servlet.port>
 							<solr.solr.home>${basedir}/src/solr-home</solr.solr.home>
 							<solr.data.dir>${project.build.directory}/solr</solr.data.dir>
-							<log4j.configuration>file://${basedir}/src/test/resources/log4j.xml</log4j.configuration>
+							<log4j.configuration>file:///${basedir}/src/test/resources/log4j.xml</log4j.configuration>
 						</systemProperties>
 						<containerId>jetty7x</containerId>
 						<type>embedded</type>
