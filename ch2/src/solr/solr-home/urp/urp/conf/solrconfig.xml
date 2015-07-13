@@ -30,10 +30,7 @@
 			This is a first processor: it removes trailing underscores in one or more fields 
 		-->
 	    <processor class="org.gazzax.labs.solr.ase.ch2.urp.RemoveTrailingUnderscoreProcessorFactory">
-			<arr name="fields">
-				<str name="fields">title</str>
-				<str name="fields">author</str>
-			</arr>    
+			<str name="fields">title,author</str>    
 	    </processor>
 	    
 	    <!-- 

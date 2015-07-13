@@ -24,7 +24,7 @@ public class RemoveTrailingUnderscoreProcessorFactory extends UpdateRequestProce
 		final SolrParams parameters = SolrParams.toSolrParams(args);
 		
 		// 2. Retrieve the names of the fields that will be checked by the processor
-		fields = parameters.getParams("fields");
+		fields = parameters.get("fields","").split(",");
 	}
 	
 	/**
