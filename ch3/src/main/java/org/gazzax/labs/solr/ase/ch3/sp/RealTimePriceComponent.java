@@ -199,8 +199,4 @@ public class RealTimePriceComponent extends SearchComponent {
 		factor = factor == 0 ? 1 : factor;
 		return base * factor;
 	}	
-	
-	public static void main(String[] args) {
-		System.out.println(new RealTimePriceComponent().getPrice("1"));
-	}
 }
